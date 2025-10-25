@@ -35,7 +35,7 @@ def get_groq_response(text_to_translate: str, system_prompt: str):
     try:
         # config = toml.load("config.toml")
         # api_key = config["groq"]["api_key"]
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = os.getenv("GROQ_API_KEY")   # for render deployment
     except (FileNotFoundError, KeyError):
         raise HTTPException(status_code=500, detail="Groq API key not found or config.toml is missing.")
 
@@ -113,4 +113,5 @@ app.add_middleware(
 )
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    port = int(os.environ.get("PORT")) # for render deployment
+    uvicorn.run("main:app", host="127.0.0.1", port=port, reload=True)
