@@ -1,0 +1,157 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+header p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* --- Upload Area --- */
+.upload-area {
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.upload-area:hover, .upload-area.dragover {
+    background-color: #f8f9fa;
+    border-color: #0056b3;
+}
+
+.upload-content .upload-icon {
+    width: 50px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.upload-content p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.file-name {
+    display: block;
+    margin-top: 15px;
+    font-weight: 500;
+    color: #0056b3;
+}
+
+/* --- Options & Button --- */
+.options {
+    margin-bottom: 25px;
+}
+
+.options label {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.options select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.translate-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: 500;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.translate-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* --- Status Area --- */
+.status-area {
+    margin-top: 25px;
+    min-height: 50px;
+}
+
+.status-area p {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.status-message.success {
+    color: #28a745;
+}
+
+.status-message.error {
+    color: #dc3545;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #218838;
+}
+
+/* --- Spinner --- */
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #999;
+}
