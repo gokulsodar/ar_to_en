@@ -33,8 +33,9 @@ def get_groq_response(text_to_translate: str, system_prompt: str):
     Gets the translation from the Groq API.
     """
     try:
-        config = toml.load("config.toml")
-        api_key = config["groq"]["api_key"]
+        # config = toml.load("config.toml")
+        # api_key = config["groq"]["api_key"]
+        api_key = os.getenv("GROQ_API_KEY")
     except (FileNotFoundError, KeyError):
         raise HTTPException(status_code=500, detail="Groq API key not found or config.toml is missing.")
 
