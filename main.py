@@ -18,19 +18,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# --- System Prompts for Translation ---
 AR_TO_EN_PROMPT = (
     "You are a professional translator. Translate the following Arabic text into "
-    "natural, fluent English. **Important:** Any personal names, company names, "
-    "geographical names, or other entities must remain in their original form; "
-    "do not translate them. Preserve the meaning and tone of the text, and ensure readability."
+    "natural, fluent English. ONLY GIVE BACK THE TRANSLATED TEXT, NOTHING ELSE."
 )
 
 EN_TO_AR_PROMPT = (
-    "You are a professional translator. Translate the following English text into "
-    "natural, fluent Arabic. **Important:** Any personal names, company names, "
-    "geographical names, or other entities must remain in their original English form; "
-    "do not translate them. Preserve the meaning and tone of the text, and ensure readability."
+    "You are a professional translator. Translate the following Arabic text into "
+    "natural, fluent Arabic. ONLY GIVE BACK THE TRANSLATED TEXT, NOTHING ELSE."
 )
 
 def get_groq_response(text_to_translate: str, system_prompt: str):
@@ -50,8 +45,6 @@ def get_groq_response(text_to_translate: str, system_prompt: str):
         system_prompt=system_prompt,
     )
     try:
-        # ans = agent.run_sync(f"Text to translate:\n{text_to_translate}").output
-        import asyncio
         ans = agent.run_sync(f"Text to translate:\n{text_to_translate}").output
 
         return ans
@@ -108,6 +101,15 @@ def translate_document(
         if os.path.exists(input_path): cleanup_file(input_path)
         
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-    cleanup_file("temp")
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
