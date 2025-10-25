@@ -1,0 +1,6 @@
+toml
+groq
+python-docx
+pydantic-ai
+fastapi[all]
+uvicorn

@@ -1,2 +1,5 @@
 config.toml
 __pycache__/
+temp/
+sample*.docx
+sample*.pdf
