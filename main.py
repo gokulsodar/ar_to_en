@@ -99,7 +99,8 @@ def translate_document(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred during translation: {e}")
     finally:
-        if os.path.exists(input_path): cleanup_file(input_path)
+        cleanup_file(input_path)
+        cleanup_file(output_path)
         
 
 from fastapi.middleware.cors import CORSMiddleware
